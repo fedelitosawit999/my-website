@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Information</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            max-width: 420px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        img {
+            width: 140px;
+            border-radius: 50%;
+            border: 4px solid #667eea;
+            margin: 15px 0;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #444;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            text-align: left;
+        }
+
+        p {
+            text-align: left;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .objective {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+
+        .btn {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #5563c1;
+        }
+
+        .footer-text {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Chat / Message Box */
+        #chatDisplay {
+            background: #f4f4f4;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            min-height: 50px;
+            max-height: 150px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        /* Input area */
+        .inputArea {
+            display: flex;
+            flex-direction: column; /* label sa ibabaw */
+            margin-top: 15px;
+            gap: 5px;
+        }
+
+        .inputLabel {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .inputRow {
+            display: flex;
+            gap: 5px; /* space between textfield & button */
+        }
+
+        #messageInput {
+            flex: 1; /* auto-grow sa available space */
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        #sendBtn {
+            padding: 10px 8px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #sendBtn:hover {
+            background: #5563c1;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <img src="imypic.jpeg" alt="My Picture">
+
+    <p class="username">@fedelitosawit</p>
+
+    <h2>Personal Information</h2>
+    <p><span>Full Name:</span> Fedelito A. Sawit</p>
+    <p><span>Age:</span> 22 years old</p>
+    <p><span>Date of Birth:</span> February 27, 2003</p>
+    <p><span>Gender:</span> Male</p>
+    <p><span>Civil Status:</span> Single</p>
+    <p><span>Nationality:</span> Filipino</p>
+    <p><span>Address:</span> Bae Upper Puerto Zone 7</p>
+    <p><span>Contact Number:</span> 09922256887</p>
+    <p><span>Email Address:</span> fedelitosawit999@gmail.com</p>
+
+    <h2>Educational Background</h2>
+    <p><span>Course:</span> BSIT</p>
+    <p><span>School:</span> USTP</p>
+    <p><span>Year Level:</span> 3rd Year College</p>
+
+    <h2>Skills & Interests</h2>
+    <p><span>Skills:</span> Basic HTML, CSS</p>
+    <p><span>Hobbies:</span> Watching anime, listening to music, singing</p>
+
+    <h2>Objective</h2>
+    <p class="objective">
+        To learn and improve my knowledge in web development and information technology.
+    </p>
+
+    <!-- SCROLL-TO-TOP BUTTON -->
+    <button class="btn" onclick="scrollToTop()">⬆ Back to Top</button>
+
+    <!-- INPUT FIELD + SEND BUTTON with Label above -->
+    <div class="inputArea">
+        <label for="messageInput" class="inputLabel">How is your day today?</label>
+        <div class="inputRow">
+            <input type="text" id="messageInput" placeholder="Type your message here...">
+            <button id="sendBtn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- CHAT DISPLAY -->
+    <div id="chatDisplay"></div>
+
+    <p class="footer-text">© 2026 • Personal Webpage</p>
+
+</div>
+
+<script>
+// Scroll to top function
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// Send message function
+function sendMessage() {
+    const input = document.getElementById("messageInput");
+    const chatDisplay = document.getElementById("chatDisplay");
+
+    if(input.value.trim() !== "") {
+        const newMsg = document.createElement("p");
+        newMsg.textContent = input.value;
+        chatDisplay.appendChild(newMsg);
+        input.value = ""; // clear input
+
+        // auto-scroll to bottom of chatDisplay
+        chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    }
+}
+</script>
+
+</body>
+</html>
